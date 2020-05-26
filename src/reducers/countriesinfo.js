@@ -7,7 +7,10 @@ export default function (state = initialState, action) {
             return{
              countriesStatus: action.data
             }
-
+        case "GET_STATS_BY_DATE":
+            return{
+                countriesStatus: action.data
+            }
         default:
             return state;
     }

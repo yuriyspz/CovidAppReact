@@ -25,3 +25,15 @@ export const getCountriesInfo = () => {
             );
     };
 }
+export const getStatsByDate = (date) => {
+    return dispatch => {
+        axios.get(baseUrl + '/history/world/'+ date)
+            .then(res => {
+                    dispatch({
+                        type: "GET_STATS_BY_DATE",
+                        data: res.data
+                    })
+                }
+            );
+    };
+}
