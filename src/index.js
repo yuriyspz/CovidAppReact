@@ -1,13 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {createStore, applyMiddleware} from "redux";
+import thunkMiddleware from "redux-thunk";
+import {Provider} from "react-redux";
+import {composeWithDevTools} from "redux-devtools-extension";
+import reducer from "./reducers";
+import WorldCountiesList from "./components/worldCountriesList"
+import WorldCountiesInfo from "./components/worldCountriesInfo";
+import WorldMapDisplay from "./components/worldmapdisplay"
+
+
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <Provider store={store}>
+        <WorldMapDisplay/>
+        {/*<WorldCountiesInfo/>*/}
+        {/*<WorldCountiesList/>*/}
+
+    </Provider>,
   document.getElementById('root')
 );
 
